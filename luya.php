@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/deployephp/recipes/common.php';
+require '../../deployephp/recipes/common.php';
 
 task('deploy:luya_commands', function() {
 	cd('{{release_path}}/configs');
