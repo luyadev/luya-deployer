@@ -7,7 +7,7 @@ install
 
 use:
 
-create a `deployer.php` file with the content:
+create a `deploy.php` file with the content:
 
 ```php
 require 'vendor/luyadev/luya-deployer/luya.php';
