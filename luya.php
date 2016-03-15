@@ -20,7 +20,7 @@ task('deploy:luya', function() {
 	}
 });
 
-task('deploy:luya_command_exporter', function() {
+task('luya:command_exporter', function() {
     run('cd {{release_path}} && ./vendor/bin/luya command exporter export');
 });
 

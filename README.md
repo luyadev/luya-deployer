@@ -82,7 +82,7 @@ example of additional using a task from LUYA deployer recipe on specfic conditio
 
 ```php
 task('customtask', array(
-    'deploy:luya_command_exporter',
+    'luya:command_exporter',
 ))->onlyOn('dev');
 
 after('deploy:luya', 'customtask');
