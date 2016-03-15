@@ -2,7 +2,7 @@
 
 require 'vendor/deployer/deployer/recipe/common.php';
 
-task('deploy:luya_commands', function() {
+task('deploy:luya', function() {
     // find file name
     $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
     // go into configs to write the file
@@ -31,8 +31,15 @@ task('luya', array(
     'deploy:release',
     'deploy:update_code',
     'deploy:vendors',
-	'deploy:luya_commands',
+	'deploy:luya',
     'deploy:symlink',
 	'deploy:shared',
     'cleanup'
 ))->desc('LUYA project deployment');
+
+task('cleanup:deployfile', function() {
+    run('cd {{release_path}}');
+    run('rm -f deploy.php');
+});
+
+after('cleanup', 'cleanup:deployfile');

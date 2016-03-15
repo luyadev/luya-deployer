@@ -85,7 +85,7 @@ task('customtask', array(
     'deploy:luya_command_exporter',
 ))->onlyOn('dev');
 
-after('deploy:luya_commands', 'customtask');
+after('deploy:luya', 'customtask');
 ```
 
 where `customtask` can be a group of other tasks or a task with a functions (which could be grouped to).
