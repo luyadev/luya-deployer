@@ -12,6 +12,12 @@ task('deploy:luya_commands', function() {
 	run('cd {{release_path}} && ./vendor/bin/luya migrate --interactive=0');
 	run('cd {{release_path}} && ./vendor/bin/luya import');
 	run('cd {{release_path}} && ./vendor/bin/luya health');
+	
+	$commands = (has('commands')) ? get('commands') : [];
+	
+	foreach($commands as $cmd) {
+	    run('cd {{release_path}} && ' . $cmd);
+	}
 });
 
 task('deploy:luya_command_exporter', function() {

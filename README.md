@@ -20,7 +20,7 @@ require 'vendor/luyadev/luya-deployer/luya.php';
 server('prod', 'SSHHOST.COM', 22)
     ->user('SSHUSER')
     ->password('SSHPASS') // You can use identity key, ssh config, or username/password to auth on the server.
-    ->stage('production')
+    ->stage('prod')
     ->env('deploy_path', '/var/www/vhosts/path/httpdocs'); // Define the base path to deploy your project to.
 
 set('repository', 'https://USER:PASSWORD@github.com/VENDOR/REPO.git');
@@ -66,3 +66,27 @@ now the `server.php` file created from deployer on the server will look like thi
 ```
 
 the extension `.php` will be added anytime!
+
+### add custom commands
+
+You might want to execute a custom LUYA task run after the basics LUYA tasks has been done, to do this you can the `commands` variable with an array list of commands, example:
+
+```php
+set('commands', [
+    './vendor/bin/luya exporter export',
+    './vendor/bin/luya mymodule controller/action',
+]);
+
+### create custom task
+
+example of additional using a task from LUYA deployer recipe on specfic conditions
+
+```php
+task('customtask', array(
+    'deploy:luya_command_exporter',
+))->onlyOn('dev');
+
+after('deploy:luya_commands', 'customtask');
+```
+
+where `customtask` can be a group of other tasks or a task with a functions (which could be grouped to).
