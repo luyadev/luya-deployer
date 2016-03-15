@@ -38,8 +38,7 @@ task('luya', array(
 ))->desc('LUYA project deployment');
 
 task('cleanup:deployfile', function() {
-    run('cd {{release_path}}');
-    run('rm -f deploy.php');
+    run('rm -f {{release_path}}/deploy.php');
 });
 
 after('cleanup', 'cleanup:deployfile');
