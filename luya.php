@@ -3,8 +3,11 @@
 require 'vendor/deployer/deployer/recipe/common.php';
 
 task('deploy:luya_commands', function() {
+    
+    $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
+    
 	cd('{{release_path}}/configs');
-	run('echo "<?php return require \'prod.php\';" > server.php');
+	run('echo "<?php return require \''.$file.'.php\';" > server.php');
 	run('cd {{release_path}} && ./vendor/bin/luya migrate --interactive=0');
 	run('cd {{release_path}} && ./vendor/bin/luya import');
 	run('cd {{release_path}} && ./vendor/bin/luya health');
