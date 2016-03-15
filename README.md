@@ -1,5 +1,7 @@
-LUYA [DEPLOYER](deployer.org)
+LUYA Deployer
 ===
+
+This is the LUYA recipe to deploy with [DEPLOYER](http://deployer.org), the Deployment Tool for PHP.
 
 ### install
 
