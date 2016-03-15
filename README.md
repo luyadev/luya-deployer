@@ -41,6 +41,16 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 Configuration
 -------------
 
+### vhost
+
+In order to run your website, you have to modify the root directory of your website to `current/public_html` folder. Deployer will create the following folders
+
++ releases
++ current
++ shared
+
+those folders are located in your defined `deploy_path` folder.
+
 ### server.php LUYA config
 
 As LUYA creates a `server.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then it `prod.php` will be writte in server.php. You can always override this picked config with:
