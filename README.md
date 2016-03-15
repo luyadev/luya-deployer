@@ -75,6 +75,7 @@ You might want to execute a custom LUYA task run after the basics LUYA tasks has
 set('commands', [
     './vendor/bin/luya command <mymodule> <controller/action>',
 ]);
+```
 
 ### create custom task
 
