@@ -73,8 +73,7 @@ You might want to execute a custom LUYA task run after the basics LUYA tasks has
 
 ```php
 set('commands', [
-    './vendor/bin/luya exporter export',
-    './vendor/bin/luya mymodule controller/action',
+    './vendor/bin/luya command <mymodule> <controller/action>',
 ]);
 
 ### create custom task
