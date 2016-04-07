@@ -38,6 +38,8 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 ./vendor/bin/dep luya dev
 ```
 
+> Do not forget to make sure you have installed the newest version of the `composer-asset-plugin` on the server where deploying luya, as deployer currently does not have an ability to install global requirements beforing deploying, to install composer asset plugin run on the server `composer global require "fxp/composer-asset-plugin:1.1.3"`.
+
 Configuration
 -------------
 
