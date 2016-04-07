@@ -13,6 +13,6 @@
 		}
 	],
 	"require" : {
-		 "deployer/deployer": "~3.0"
+		 "deployer/deployer": "^3.1"
 	}
 }
