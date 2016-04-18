@@ -21,7 +21,7 @@ task('deploy:luya', function() {
 });
 
 task('luya:command_exporter', function() {
-    run('cd {{release_path}} && ./vendor/bin/luya command exporter export');
+    run('cd {{release_path}} && ./vendor/bin/luya exporter/export');
 });
 
 set('shared_dirs', ['public_html/storage']);
