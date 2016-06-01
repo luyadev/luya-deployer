@@ -2,7 +2,7 @@
 	"name" : "luyadev/luya-deployer",
 	"description" : "LUYA deployer recipe",
 	"type" : "project",
-	"keywords" : ["php", "yii2", "luya", "deployer"],
+	"keywords" : ["php", "yii2", "luya", "deployer", "luya-module"],
 	"license": "MIT",
 	"homepage" : "http://luya.io",
 	"authors" : [
