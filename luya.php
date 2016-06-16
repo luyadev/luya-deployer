@@ -41,6 +41,7 @@ task('luya', array(
 
 task('cleanup:deployfile', function() {
     run('rm -f {{release_path}}/deploy.php');
+    run('rm -f {{release_path}}/README.md');
 });
 
 after('cleanup', 'cleanup:deployfile');
