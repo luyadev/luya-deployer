@@ -1,7 +1,7 @@
 {
 	"name" : "luyadev/luya-deployer",
 	"description" : "This is the LUYA recipe to deploy with Deployer, the Deployment Tool for PHP.",
-	"type" : "project",
+	"type" : "luya-module",
 	"keywords" : ["php", "yii2", "luya", "deployer", "luya-module"],
 	"license": "MIT",
 	"homepage" : "http://luya.io",
