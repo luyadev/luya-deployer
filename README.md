@@ -3,7 +3,7 @@ LUYA Deployer
 
 This is the LUYA recipe to deploy with [DEPLOYER](http://deployer.org), the Deployment Tool for PHP.
 
-### install
+### Install
 
 Add the deployer composer package to your project:
 
@@ -45,33 +45,33 @@ Configuration
 
 ### vhost
 
-In order to run your website, you have to modify the root directory of your website to `current/public_html` folder. Deployer will create the following folders
+In order to run your website, you have to modify the root directory of your website to `current/public_html` folder. Deployer will create the following folders:
 
 + releases
 + current
 + shared
 
-those folders are located in your defined `deploy_path` folder.
+Those folders are located in your defined `deploy_path` folder.
 
 ### server.php LUYA config
 
-As LUYA creates a `server.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then it `prod.php` will be writte in server.php. You can always override this picked config with:
+As LUYA creates a `server.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `prod.php` will be written in `server.php`. You can always override this picked config with:
 
 ```php
 set('requireConfig', 'custom_config');
 ```
 
-now the `server.php` file created from deployer on the server will look like this:
+Now the `server.php` file created from deployer on the server will look like this:
 
 ```php
 <?php return require 'custom_config.php'; ?>
 ```
 
-the extension `.php` will be added anytime!
+The extension `.php` will be added anytime!
 
-### add custom commands
+### Add custom commands
 
-You might want to execute a custom LUYA task run after the basics LUYA tasks has been done, to do this you can the `commands` variable with an array list of commands, example:
+You might want to execute a custom LUYA task, which will be executed after the basic LUYA tasks are finished. To do this, you can use the `commands` variable with an array list of commands. Example:
 
 ```php
 set('commands', [
@@ -79,9 +79,9 @@ set('commands', [
 ]);
 ```
 
-### create custom task
+### Create a custom task
 
-example of additional using a task from LUYA deployer recipe on specfic conditions
+Example of an additional task using a task from LUYA deployer recipe on specfic conditions:
 
 ```php
 task('customtask', array(
@@ -91,4 +91,15 @@ task('customtask', array(
 after('deploy:luya', 'customtask');
 ```
 
-where `customtask` can be a group of other tasks or a task with a functions (which could be grouped to).
+Where `customtask` can be a group of other tasks or a task with a functions (which could be grouped to). See the official [Deployer documentation](http://deployer.org/docs/tasks).
+
+Another practical example is using a remote executed shell command in a custom task. For this we are using another [LUYA module](https://github.com/luyadev/luya-module-exporter) to automatically export a remote database and import it to the local database. This example will export the `prod` database of a project and import it, but only for the `prep` environment. Note the switched off `interactive` flag to override the security questions, because we are unable to obtain any user input via deployer tasks:
+
+```php
+task('deploy:importProdDb', function() {
+    cd('{{release_path}}');
+    run('./vendor/bin/luya exporter/database/remote-replace-local "mysql:host=localhost;dbname=prod_database" "USER" "PASSWORD" --interactive=0');
+})->onlyOn('prep');
+
+after('deploy:luya', 'deploy:importProdDb');
+```
