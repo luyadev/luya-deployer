@@ -8,6 +8,7 @@ task('deploy:luya', function() {
     // go into configs to write the file
 	cd('{{release_path}}/configs');
 	run('echo "<?php return require \''.$file.'.php\';" > server.php');
+	run('echo "<?php return require \'env-'.$file.'.php\';" > env.php');
 	
 	cd('{{release_path}}');
 	// run all basic luya commands
