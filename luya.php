@@ -34,9 +34,9 @@ task('luya', array(
     'deploy:release',
     'deploy:update_code',
     'deploy:vendors',
-	'deploy:luya',
+    'deploy:luya',
     'deploy:symlink',
-	'deploy:shared',
+    'deploy:shared',
     'cleanup'
 ))->desc('LUYA project deployment');
 
