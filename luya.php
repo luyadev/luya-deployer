@@ -13,10 +13,17 @@ task('deploy:luya', function() {
 	cd('{{release_path}}');
 	// run all basic luya commands
 	run('./vendor/bin/luya migrate --interactive=0');
+	
+	$commands = (has('beforeCommands')) ? get('beforeCommands') : [];
+	
+	foreach($commands as $cmd) {
+	    run($cmd);
+	}
+	
 	run('./vendor/bin/luya import');
 	run('./vendor/bin/luya health');
 	
-	$commands = (has('commands')) ? get('commands') : [];
+	$commands = (has('afterCommands')) ? get('afterCommands') : [];
 	
 	foreach($commands as $cmd) {
 	    run($cmd);
