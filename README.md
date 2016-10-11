@@ -71,11 +71,14 @@ The extension `.php` will be added anytime!
 
 ### Add custom commands
 
-You might want to execute a custom LUYA task, which will be executed after the basic LUYA tasks are finished. To do this, you can use the `commands` variable with an array list of commands. Example:
+You might want to execute a custom LUYA task, which will be executed after the basic LUYA tasks are finished. To do this, you can use the `beforeCommands` and `afterCommands` variable with an array list of commands.
+
++ beforeCommands: Will be excuted after the migration has been applied but **before the import** command.
++ afterCommands: Will be executed **after the import** command.
 
 ```php
-set('commands', [
-    './vendor/bin/luya <mymodule>/<controller/action>',
+set('afterCommands', [
+    './vendor/bin/luya <mymodule>/<controller/<action>',
 ]);
 ```
 
