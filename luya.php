@@ -11,8 +11,13 @@ task('deploy:luya', function() {
 	run('echo "<?php return require \'env-'.$file.'.php\';" > env.php');
 	
 	cd('{{release_path}}');
-	// run all basic luya commands
-	run('./vendor/bin/luya migrate --interactive=0');
+	
+	$adminCoreCommands = (has('adminCoreCommands')) ? get('adminCoreCommands') : true;
+	
+	if ($adminCoreCommands) {
+		// run all basic luya commands
+		run('./vendor/bin/luya migrate --interactive=0');
+	}
 	
 	$commands = (has('beforeCommands')) ? get('beforeCommands') : [];
 	
@@ -20,8 +25,10 @@ task('deploy:luya', function() {
 	    run($cmd);
 	}
 	
-	run('./vendor/bin/luya import');
-	run('./vendor/bin/luya health');
+	if ($adminCoreCommands) {
+		run('./vendor/bin/luya import');
+		run('./vendor/bin/luya health');
+	}
 	
 	$commands = (has('afterCommands')) ? get('afterCommands') : [];
 	
