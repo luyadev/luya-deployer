@@ -1,5 +1,4 @@
-LUYA Deployer
-===
+# LUYA Deployer
 
 This is the LUYA recipe to deploy with [DEPLOYER](http://deployer.org), the Deployment Tool for PHP.
 
@@ -40,8 +39,15 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 
 > Do not forget to make sure you have installed the newest version of the `composer-asset-plugin` on the server where deploying luya, as deployer currently does not have an ability to install global requirements beforing deploying, to install composer asset plugin run on the server `composer global require "fxp/composer-asset-plugin:1.1.3"`.
 
-Configuration
--------------
+## Configuration
+
+### Disable/Enable admin core commands
+
+Sometimes you want to disable the default core commands of the admin module (migrate & import command). Thisi mostly the case when using a luya core application without admin and cms modules.
+
+```php
+set('adminCoreCommands', false); // will disable import and migrate command
+```
 
 ### vhost
 
