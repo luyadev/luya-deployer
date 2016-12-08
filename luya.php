@@ -1,10 +1,25 @@
 <?php
 
-require 'vendor/deployer/deployer/recipe/common.php';
+use function Deployer\{server, task, run, set, get, add, before, after};
+
+// set custom bin
+set('bin/composer', function () {
+    if (commandExist('composer')) {
+        $composer = run('which composer')->toString();
+    }
+    if (empty($composer)) {
+        run("cd {{release_path}} && curl -sS https://getcomposer.org/installer | {{bin/php}}");
+        $composer = '{{bin/php}} {{release_path}}/composer.phar';
+    }
+    
+    run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:~1.2\"");
+    
+    return $composer;
+});
 
 task('deploy:luya', function() {
     // find file name
-    $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
+    $file = (has('requireConfig')) ? get('requireConfig') : get('server.name');
     // go into configs to write the file
 	cd('{{release_path}}/configs');
 	run('echo "<?php return require \''.$file.'.php\';" > server.php');

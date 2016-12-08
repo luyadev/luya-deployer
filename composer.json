@@ -1,23 +1,31 @@
 {
 	"name" : "luyadev/luya-deployer",
-	"description" : "This is the LUYA recipe to deploy with Deployer, the Deployment Tool for PHP.",
+	"description" : "This is the LUYA recipe to deploy an application with Deployer, the Deployment Tool for PHP.",
 	"type" : "luya-module",
 	"keywords" : ["php", "yii2", "luya", "deployer", "luya-module"],
 	"license": "MIT",
-	"homepage" : "http://luya.io",
+	"homepage" : "https://luya.io",
 	"authors" : [
 		{
-			"name" : "Basil",
+			"name" : "Basil Suter",
 			"email" : "git@nadar.io",
 			"homepage" : "https://github.com/nadar"
 		}
 	],
 	"require" : {
-		 "deployer/deployer": "^3.1"
+		 "deployer/deployer": "~4.0"
+	},
+	"require-dev" : {
+	   "phpunit/phpunit" : "~5.0"
 	},
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
+        }
+    },
+    "autoload" : {
+        "psr-4" : {
+            "luya\\deployer\\tests\\" : "tests/"
         }
     }
 }
