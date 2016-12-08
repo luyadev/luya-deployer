@@ -1,9 +1,9 @@
 <?php
 
-use function Deployer\{server, task, run, set, get, add, before, after};
+require 'vendor/deployer/deployer/recipe/common.php';
 
 // set custom bin
-set('bin/composer', function () {
+env('bin/composer', function () {
     if (commandExist('composer')) {
         $composer = run('which composer')->toString();
     }
@@ -19,7 +19,7 @@ set('bin/composer', function () {
 
 task('deploy:luya', function() {
     // find file name
-    $file = (has('requireConfig')) ? get('requireConfig') : get('server.name');
+    $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
     // go into configs to write the file
 	cd('{{release_path}}/configs');
 	run('echo "<?php return require \''.$file.'.php\';" > server.php');

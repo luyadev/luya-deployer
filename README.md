@@ -2,8 +2,6 @@
 
 This is the LUYA recipe to deploy with [DEPLOYER](http://deployer.org), the Deployment Tool for PHP.
 
-> **Attention:** Due to upgrade to version 4 the function `env` is not used anymore: change `env('key', 'value')` to `set('key', value)` and `env('key')` to `get('key')`.
-
 ### Install
 
 Add the deployer composer package to your project:
@@ -22,7 +20,7 @@ server('prod', 'SSHHOST.COM', 22)
     ->user('SSHUSER')
     ->password('SSHPASS') // You can use identity key, ssh config, or username/password to auth on the server.
     ->stage('prod')
-    ->set('deploy_path', '/var/www/vhosts/path/httpdocs'); // Define the base path to deploy your project to.
+    ->env('deploy_path', '/var/www/vhosts/path/httpdocs'); // Define the base path to deploy your project to.
 
 set('repository', 'https://USER:PASSWORD@github.com/VENDOR/REPO.git');
 ```
@@ -38,8 +36,6 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 ```sh
 ./vendor/bin/dep luya dev
 ```
-
-> Do not forget to make sure you have installed the newest version of the `composer-asset-plugin` on the server where deploying luya, as deployer currently does not have an ability to install global requirements beforing deploying, to install composer asset plugin run on the server `composer global require "fxp/composer-asset-plugin:~1.2"`.
 
 ## Configuration
 
