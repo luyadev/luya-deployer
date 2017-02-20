@@ -41,7 +41,11 @@ task('deploy:luya', function() {
 	}
 	
 	if ($adminCoreCommands) {
-		$import = run('./vendor/bin/luya import');
+		if (isVerbose()) {
+			$import = run('./vendor/bin/luya import --verbose=1');
+		} else {
+			$import = run('./vendor/bin/luya import');	
+		}		
 		writeln("Import result: $import");
 		$health = run('./vendor/bin/luya health');
 		writeln("Health result: $health");
