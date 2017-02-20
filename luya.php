@@ -41,8 +41,10 @@ task('deploy:luya', function() {
 	}
 	
 	if ($adminCoreCommands) {
-		run('./vendor/bin/luya import');
-		run('./vendor/bin/luya health');
+		$import = run('./vendor/bin/luya import');
+		writeln("Import result: $import");
+		$health = run('./vendor/bin/luya health');
+		writeln("Health result: $health");
 	}
 	
 	$commands = (has('afterCommands')) ? get('afterCommands') : [];
