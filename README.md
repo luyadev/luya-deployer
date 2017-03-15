@@ -37,6 +37,8 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 ./vendor/bin/dep luya dev
 ```
 
+> In order to configure a branch to deploy use `env('branch', 'myCheckoutBranch');`
+
 ## Configuration
 
 ### Disable/Enable admin core commands
