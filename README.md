@@ -49,6 +49,14 @@ Sometimes you want to disable the default core commands of the admin module (mig
 set('adminCoreCommands', false); // will disable import and migrate command
 ```
 
+### Keep the Deployer
+
+Sometimes you want to leave the deployer.php file on the server (which will be default deleted from the server after deployment) in order enable this option use:
+
+```php
+set('keepDeployer', true); // will not delete the deployer file
+```
+
 ### vhost
 
 In order to run your website, you have to modify the root directory of your website to `current/public_html` folder. Deployer will create the following folders:
