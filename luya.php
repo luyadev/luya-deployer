@@ -76,7 +76,10 @@ task('luya', array(
 ))->desc('LUYA project deployment');
 
 task('cleanup:deployfile', function() {
-    run('rm -f {{release_path}}/deploy.php');
+    $keepDeployer = (has('keepDeployer')) ? get('keepDeployer') : false;
+    if (!$keepDeployer) {
+        run('rm -f {{release_path}}/deploy.php');
+    }
     run('rm -f {{release_path}}/README.md');
 });
 
