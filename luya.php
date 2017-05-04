@@ -12,7 +12,7 @@ env('bin/composer', function () {
         $composer = '{{bin/php}} {{release_path}}/composer.phar';
     }
     
-    run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:~1.2\"");
+    run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:~1.3\"");
     
     return $composer;
 });
