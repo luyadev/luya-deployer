@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file. This projec
 1.0.1 (in progress)
 -------------------
 
++ Update FXP Plugin to Version 1.3
+
 1.0.0 (24. April 2017)
 ----------------------
 
