@@ -74,13 +74,13 @@ Those folders are located in your defined `deploy_path` folder.
 
 ### server.php LUYA config
 
-As LUYA creates a `server.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `prod.php` will be written in `server.php`. You can always override this picked config with:
+As LUYA creates a `env.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `env-prod.php` config will be loaded in `env.php`. You can always override this picked config with:
 
 ```php
 set('requireConfig', 'custom_config');
 ```
 
-Now the `server.php` file created from deployer on the server will look like this:
+Now the `env.php` file created by deployer on the server will look like this:
 
 ```php
 <?php return require 'custom_config.php'; ?>
