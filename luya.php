@@ -56,7 +56,7 @@ task('deploy:luya', function() {
 	foreach($commands as $cmd) {
 	    run($cmd);
 	}
-});
+})->desc('Run LUYA commands.');
 
 task('luya:command_exporter', function() {
     run('cd {{release_path}} && ./vendor/bin/luya exporter/export');
@@ -81,6 +81,6 @@ task('cleanup:deployfile', function() {
         run('rm -f {{release_path}}/deploy.php');
     }
     run('rm -f {{release_path}}/README.md');
-});
+})->desc('Remove Deployer File');
 
 after('cleanup', 'cleanup:deployfile');
