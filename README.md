@@ -12,7 +12,7 @@ This is the LUYA recipe to deploy with [DEPLOYER](http://deployer.org), the Depl
 Add the deployer composer package to your project:
 
 ```sh
-composer require luyadev/luya-deployer:~1.0.0
+composer require luyadev/luya-deployer:~1.0.0 --dev
 ```
 
 Create a `deploy.php` file with the content of your server configuration(s) and store it in the root directory of your project:
