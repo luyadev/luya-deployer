@@ -126,7 +126,7 @@ task('deploy:importProdDb', function() {
 after('deploy:luya', 'deploy:importProdDb');
 ```
 
-## Hosts and deployment key
+## Hosts and deployment with SSH keys
 
 To connect your hosting server with your repo is some configuration needed.
 
@@ -139,7 +139,7 @@ To connect your hosting server with your repo is some configuration needed.
 
 Add something like this to your configuration file:
 
-```shell
+```sh
 Host bitbucket.org-ro
     HostName bitbucket.org
     IdentityFile ~/.ssh/id_rsa_ro
@@ -148,21 +148,21 @@ Host
 
 make sure the that the correct permissions and owner are applied to the created config file:
 
-```shell
+```sh
 chmod 600 ~/.ssh/config
 chown $USER ~/.ssh/config
 ```
 
 5. Adding BitBucket to `known_hosts` on your server.
 
-```shell
+```sh
 vim ~/.ssh/known_hosts
 ```
 
-Usually the RSA fingerpint is etablisch automatically on approval if you run `git clone` via ssh, but here we need to add it manually.
+Usually the RSA fingerpint is established automatically on approval if you run `git clone` via ssh, but here we need to add it manually.
 
-```shell
-bitbucket.org,104.192.143.2 [[your secret id_rsa_ro.pub ssh key, replace your email at the end with ==]]
+```sh
+bitbucket.org,104.192.143.2 [[your secret id_rsa_ro.pub ssh key, use '==' for separation of different keys]]
 ```
 
 6. Setup up your local `deploy.php` as decribed above and run the deploment `./vendor/bin/dep luya [[your selected stage]]`.
