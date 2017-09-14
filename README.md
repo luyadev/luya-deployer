@@ -132,25 +132,10 @@ To connect your hosting server with your repo is some configuration needed.
 
 ### Bitbucket
 
-1. Login in to your server via ssh from Terminal .
-
-`ssh username@domain.tld`
-
-2. Create an SSH key with read only access on your server.
-
-`ssh-keygen -f ~/.ssh/id_rsa_ro -t rsa -C "email@domain.tld"`
-
-3. Copy the created key and go to your BitBucket account settings.
-
-`vim ~/.ssh/id_rsa_ro.pub`
-
-if you have sudo access you could install xclip `sudo apt-get install xclip` and copy it with runnig a singel command.
-
-`xclip -sel clip < ~/.ssh/id_rsa_ro.pub`
-
-4. Modify your ssh configuration on your server.
-
-Edit `vim ~/.ssh/config` or create a new file.
+1. Login in to your server via ssh from Terminal. `ssh username@domain.tld`
+2. Create an SSH key with read only access on your server. `ssh-keygen -f ~/.ssh/id_rsa_ro -t rsa -C "email@domain.tld"`
+3. Copy the created key and go to your BitBucket account settings. `cat ~/.ssh/id_rsa_ro.pub`
+4. Modify your ssh configuration on your server. Edit `vim ~/.ssh/config` or create a new file.
 
 Add something like this to your configuration file:
 
@@ -173,6 +158,7 @@ chown $USER ~/.ssh/config
 ```shell
 vim ~/.ssh/known_hosts
 ```
+
 Usually the RSA fingerpint is etablisch automatically on approval if you run `git clone` via ssh, but here we need to add it manually.
 
 ```shell
