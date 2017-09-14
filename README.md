@@ -159,7 +159,7 @@ chown $USER ~/.ssh/config
 vim ~/.ssh/known_hosts
 ```
 
-Usually the RSA fingerpint is etablished automatically on approval if you run `git clone` via ssh, but here we need to add it manually.
+Usually the RSA fingerpint is established automatically on approval if you run `git clone` via ssh, but here we need to add it manually.
 
 ```php
 bitbucket.org,104.192.143.2 [[your secret id_rsa_ro.pub ssh key, use '==' for separation or different keys]]
