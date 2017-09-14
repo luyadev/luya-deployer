@@ -162,7 +162,7 @@ vim ~/.ssh/known_hosts
 Usually the RSA fingerpint is etablished automatically on approval if you run `git clone` via ssh, but here we need to add it manually.
 
 ```php
-bitbucket.org,104.192.143.2 [[your secret id_rsa_ro.pub ssh key, use '==' for separation or diffrent keys]]
+bitbucket.org,104.192.143.2 [[your secret id_rsa_ro.pub ssh key, use '==' for separation or different keys]]
 ```
 
 6. Setup up your local `deploy.php` as decribed above and run the deploment `./vendor/bin/dep luya [[your selected stage]]`.
