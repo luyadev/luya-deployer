@@ -7,7 +7,7 @@
 
 This is the LUYA recipe to deploy with [DEPLOYER](http://deployer.org), the Deployment Tool for PHP.
 
-### Install
+## Install
 
 Add the deployer composer package to your project:
 
