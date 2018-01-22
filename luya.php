@@ -45,7 +45,6 @@ task('deploy:luya', function () {
     // run: migrate
     $adminCoreCommands = (has('adminCoreCommands')) ? get('adminCoreCommands') : true;
     if ($adminCoreCommands) {
-        // run all basic luya commands
         run('./vendor/bin/luya migrate --interactive=0');
     }
     
