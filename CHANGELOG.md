@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. This projec
 1.0.3 (in progress
 ------------------
 
-+ no changes in this release yet.
++ [#4](https://github.com/luyadev/luya-deployer/issues/4) Added beforeCoreCommands() option
 
 1.0.2 (25. October 2017)
 -------------------

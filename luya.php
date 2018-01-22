@@ -2,7 +2,13 @@
 
 require 'vendor/deployer/deployer/recipe/common.php';
 
-// set custom bin
+/**
+ * The LUYA deployer recipe based on the common recipe.
+ */
+
+/**
+ * Set custom composer bin
+ */
 env('bin/composer', function () {
     if (commandExist('composer')) {
         $composer = run('which composer')->toString();
@@ -17,53 +23,72 @@ env('bin/composer', function () {
     return $composer;
 });
 
-task('deploy:luya', function() {
+/**
+ * Task: deploy:luya
+ */
+task('deploy:luya', function () {
     // find file name
     $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
     // go into configs to write the file
-	cd('{{release_path}}/configs');
-	run('echo "<?php return require \''.$file.'.php\';" > server.php');
-	run('echo "<?php return require \'env-'.$file.'.php\';" > env.php');
-	
-	cd('{{release_path}}');
-	
-	$adminCoreCommands = (has('adminCoreCommands')) ? get('adminCoreCommands') : true;
-	
-	if ($adminCoreCommands) {
-		// run all basic luya commands
-		run('./vendor/bin/luya migrate --interactive=0');
-	}
-	
-	$commands = (has('beforeCommands')) ? get('beforeCommands') : [];
-	
-	foreach($commands as $cmd) {
-	    run($cmd);
-	}
-	
-	if ($adminCoreCommands) {
-		if (isVerbose()) {
-			$import = run('./vendor/bin/luya import --verbose=1');
-		} else {
-			$import = run('./vendor/bin/luya import');	
-		}		
-		writeln("Import result: $import");
-		$health = run('./vendor/bin/luya health');
-		writeln("Health result: $health");
-	}
-	
-	$commands = (has('afterCommands')) ? get('afterCommands') : [];
-	
-	foreach($commands as $cmd) {
-	    run($cmd);
-	}
+    cd('{{release_path}}/configs');
+    run('echo "<?php return require \''.$file.'.php\';" > server.php');
+    run('echo "<?php return require \'env-'.$file.'.php\';" > env.php');
+    
+    cd('{{release_path}}');
+    
+    // run: beforeCoreCommands
+    $commands = (has('beforeCoreCommands')) ? get('beforeCoreCommands') : [];
+    foreach ($commands as $cmd) {
+        run($cmd);
+    }
+    
+    // run: migrate
+    $adminCoreCommands = (has('adminCoreCommands')) ? get('adminCoreCommands') : true;
+    if ($adminCoreCommands) {
+        // run all basic luya commands
+        run('./vendor/bin/luya migrate --interactive=0');
+    }
+    
+    // run: beforeCommands
+    $commands = (has('beforeCommands')) ? get('beforeCommands') : [];
+    foreach ($commands as $cmd) {
+        run($cmd);
+    }
+    
+    // run: import, health
+    if ($adminCoreCommands) {
+        if (isVerbose()) {
+            $import = run('./vendor/bin/luya import --verbose=1');
+        } else {
+            $import = run('./vendor/bin/luya import');
+        }
+        writeln("Import result: $import");
+        $health = run('./vendor/bin/luya health');
+        writeln("Health result: $health");
+    }
+    
+    // run: afterCommands
+    $commands = (has('afterCommands')) ? get('afterCommands') : [];
+    foreach ($commands as $cmd) {
+        run($cmd);
+    }
 })->desc('Run LUYA commands.');
 
-task('luya:command_exporter', function() {
+/**
+ * Task: luya:command_exporter
+ */
+task('luya:command_exporter', function () {
     run('cd {{release_path}} && ./vendor/bin/luya exporter/export');
 });
 
+/**
+ * Set global env shared dirs.
+ */
 set('shared_dirs', ['public_html/storage']);
 
+/**
+ * Task: luya
+ */
 task('luya', array(
     'deploy:prepare',
     'deploy:release',
@@ -75,7 +100,10 @@ task('luya', array(
     'cleanup'
 ))->desc('LUYA project deployment');
 
-task('cleanup:deployfile', function() {
+/**
+ * Task: cleanup:deployefile
+ */
+task('cleanup:deployfile', function () {
     $keepDeployer = (has('keepDeployer')) ? get('keepDeployer') : false;
     if (!$keepDeployer) {
         run('rm -f {{release_path}}/deploy.php');
@@ -83,4 +111,7 @@ task('cleanup:deployfile', function() {
     run('rm -f {{release_path}}/README.md');
 })->desc('Remove Deployer File');
 
+/**
+ * Set deployfile cleanup
+ */
 after('cleanup', 'cleanup:deployfile');

@@ -90,7 +90,7 @@ The extension `.php` will be added anytime!
 
 ### Add custom commands
 
-You might want to execute a custom LUYA task, which will be executed after the basic LUYA tasks are finished. To do this, you can use the `beforeCommands` and `afterCommands` variable with an array list of commands.
+You might want to execute a custom LUYA task, which will be executed after the basic LUYA tasks are finished. To do this, you can use the `beforeCommands` and `afterCommands` variable with an array list of commands. If you want to run a command even before migrat command use `beforeCoreCommands`.
 
 + beforeCommands: Will be excuted after the migration has been applied but **before the import** command.
 + afterCommands: Will be executed **after the import** command.
@@ -100,6 +100,14 @@ set('afterCommands', [
     './vendor/bin/luya <mymodule>/<controller/<action>',
 ]);
 ```
+
+Command execution lifecycle:
+
+1. run `beforeCoreCommands`.
+2. if `adminCoreCommands` is enabled: `migration`
+3. run `beforeCommands`
+4. if `adminCoreCommands` is enabled: `import`, `health`
+5. run `afterCommands`
 
 ### Create a custom task
 
