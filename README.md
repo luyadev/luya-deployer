@@ -44,25 +44,7 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 
 > In order to configure a branch to deploy use `env('branch', 'myCheckoutBranch');`
 
-## Configuration
-
-### Disable/Enable admin core commands
-
-Sometimes you want to disable the default core commands of the admin module (migrate & import command). Thisi mostly the case when using a luya core application without admin and cms modules.
-
-```php
-set('adminCoreCommands', false); // will disable import and migrate command
-```
-
-### Keep the Deployer
-
-Sometimes you want to leave the deployer.php file on the server (which will be default deleted from the server after deployment) in order enable this option use:
-
-```php
-set('keepDeployer', true); // will not delete the deployer file
-```
-
-### vhost
+**Set your vhost entry directory**
 
 In order to run your website, you have to modify the root directory of your website to `current/public_html` folder. Deployer will create the following folders:
 
@@ -71,6 +53,16 @@ In order to run your website, you have to modify the root directory of your webs
 + shared
 
 Those folders are located in your defined `deploy_path` folder.
+
+## Configuration
+
+### Options
+
+|variable|description|example
+|---------|----------|------
+|installFxpPlugin|Whether fxp plugin should be installed or not|`set('installFxpPlugin', false)` disable auto installing of fxp composer asset plugin (global require scope).
+|adminCoreCommands|Sometimes you want to disable the default core commands of the admin module (migrate & import command). Thisi mostly the case when using a luya core application without admin and cms modules.|`set('adminCoreCommands', false)`
+|keepDeployer|Sometimes you want to leave the deployer.php file on the server (which will be default deleted from the server after deployment) in order enable this option|`set('keepDeployer', true)`
 
 ### server.php LUYA config
 

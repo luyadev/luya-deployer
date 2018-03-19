@@ -22,11 +22,15 @@ env('bin/composer', function () {
         $composer = '{{bin/php}} {{release_path}}/composer.phar';
     }
     
-    run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:^1.4.2\"");
+    $installFxpPlugin = (has('installFxpPlugin')) ? get('installFxpPlugin') : true;
+    
+    if (installFxpPlugin) {
+        run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:^1.4.2\"");
+    }
     
     if (isVerbose()) {
         $version = run("cd {{release_path}} && ".$composer." -V");
-        writeln("Composer version: " . $version);   
+        writeln("Composer version: " . $version);
     }
     
     return $composer;
