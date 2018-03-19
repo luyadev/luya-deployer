@@ -12,6 +12,10 @@ require 'vendor/deployer/deployer/recipe/common.php';
 env('bin/composer', function () {
     if (commandExist('composer')) {
         $composer = run('which composer')->toString();
+        
+        if (isVerbose()) {
+            writeln("Use global installed composer: " . $composer);   
+        }
     }
     if (empty($composer)) {
         run("cd {{release_path}} && curl -sS https://getcomposer.org/installer | {{bin/php}}");
@@ -20,6 +24,11 @@ env('bin/composer', function () {
     
     run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:^1.4.2\"");
     
+    if (isVerbose()) {
+        $version = run("cd {{release_path}} && ".$composer." -V");
+        writeln("Composer version: " . $version);   
+    }
+    
     return $composer;
 });
 
@@ -27,6 +36,7 @@ env('bin/composer', function () {
  * Task: deploy:luya
  */
 task('deploy:luya', function () {
+    
     // find file name
     $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
     // go into configs to write the file
