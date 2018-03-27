@@ -122,7 +122,9 @@ task('cleanup:deployfile', function () {
         run('rm -f {{release_path}}/deploy.php');
     }
     run('rm -f {{release_path}}/README.md');
-})->desc('Remove Deployer File');
+    run('rm -f {{release_path}}/composer.lock');
+    run('rm -f {{release_path}}/composer.json');
+})->desc('Remove sensitive data');
 
 /**
  * Set deployfile cleanup
