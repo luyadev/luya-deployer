@@ -63,22 +63,7 @@ Those folders are located in your defined `deploy_path` folder.
 |installFxpPlugin|Whether fxp plugin should be installed or not|`set('installFxpPlugin', false)` disable auto installing of fxp composer asset plugin (global require scope).
 |adminCoreCommands|Sometimes you want to disable the default core commands of the admin module (migrate & import command). Thisi mostly the case when using a luya core application without admin and cms modules.|`set('adminCoreCommands', false)`
 |keepDeployer|Sometimes you want to leave the deployer.php file on the server (which will be default deleted from the server after deployment) in order enable this option|`set('keepDeployer', true)`
-
-### server.php LUYA config
-
-As LUYA creates a `env.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `env-prod.php` config will be loaded in `env.php`. You can always override this picked config with:
-
-```php
-set('requireConfig', 'custom_config');
-```
-
-Now the `env.php` file created by deployer on the server will look like this:
-
-```php
-<?php return require 'custom_config.php'; ?>
-```
-
-The extension `.php` will be added anytime!
+|requireConfig|As LUYA creates a `env.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `env-prod.php` config will be loaded in `env.php`.|`set('requireConfig', 'custom_config');` Now the `env.php` file created by deployer on the server will look like this `<?php return require 'custom_config.php'; ?>`
 
 ### Add custom commands
 
