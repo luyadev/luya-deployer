@@ -123,7 +123,7 @@ To connect your hosting server with your repo is some configuration needed.
 
 1. Login in to your server via ssh from Terminal. `ssh username@domain.tld`
 2. Create an SSH key with read only access on your server. `ssh-keygen -f ~/.ssh/id_rsa_ro -t rsa -C "email@domain.tld"` 
-3. And add the created key pair, `id_rsa_ro` and `id_rsa_ro.pub` to your BitBucket SSH Section in the project Settings > SSH, **not in to th profile SSH key**.
+3. And add the created key pair, `id_rsa_ro` and `id_rsa_ro.pub` to your BitBucket SSH Section in the project Settings -> SSH, **not in the profile SSH key section**.
 4. Modify your ssh configuration on your server. Edit `vim ~/.ssh/config` or create a new file.
 
 Add something like this to your configuration file:
