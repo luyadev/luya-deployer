@@ -122,8 +122,8 @@ To connect your hosting server with your repo is some configuration needed.
 ### Bitbucket
 
 1. Login in to your server via ssh from Terminal. `ssh username@domain.tld`
-2. Create an SSH key with read only access on your server. `ssh-keygen -f ~/.ssh/id_rsa_ro -t rsa -C "email@domain.tld"`
-3. Copy the created key and go to your BitBucket account settings. `cat ~/.ssh/id_rsa_ro.pub`
+2. Create an SSH key with read only access on your server. `ssh-keygen -f ~/.ssh/id_rsa_ro -t rsa -C "email@domain.tld"` 
+3. And add the created key pair, `id_rsa_ro` and `id_rsa_ro.pub` to your BitBucket SSH Section in the project Settings > SSH, **not in to th profile SSH key**.
 4. Modify your ssh configuration on your server. Edit `vim ~/.ssh/config` or create a new file.
 
 Add something like this to your configuration file:
@@ -151,7 +151,7 @@ vim ~/.ssh/known_hosts
 Usually the RSA fingerpint is established automatically on approval if you run `git clone` via ssh, but here we need to add it manually.
 
 ```sh
-bitbucket.org,104.192.143.2 [[your secret id_rsa_ro.pub ssh key, use '==' for separation of different keys]]
+bitbucket.org,104.192.143.2 [<your-secret id_rsa_ro.pub ssh key>]
 ```
 
-6. Setup up your local `deploy.php` as decribed above and run the deploment `./vendor/bin/dep luya [[your selected stage]]`.
+6. Setup up your local `deploy.php` as decribed above and run the deployment `./vendor/bin/dep luya <stage>`.
