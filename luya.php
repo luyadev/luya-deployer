@@ -115,13 +115,18 @@ task('luya', array(
 
 /**
  * Task: cleanup:deployefile
+ *
+ * Remove sensitive files after deployment.
  */
 task('cleanup:deployfile', function () {
     $keepDeployer = (has('keepDeployer')) ? get('keepDeployer') : false;
+    // as the deployer file can contain sensitive data about other webserver.
     if (!$keepDeployer) {
         run('rm -f {{release_path}}/deploy.php');
     }
+    // sometimes the readme contains data about loggin informations or other privacy content.
     run('rm -f {{release_path}}/README.md');
+    // the lock and json file can contain github tokens when working with private composer repos.
     run('rm -f {{release_path}}/composer.lock');
     run('rm -f {{release_path}}/composer.json');
 })->desc('Remove sensitive data');
