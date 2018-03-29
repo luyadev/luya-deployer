@@ -115,6 +115,6 @@ task('deploy:importProdDb', function() {
 after('deploy:luya', 'deploy:importProdDb');
 ```
 
-## Provide Instructions
+## Additional Providers
 
-+ [Bit Bucket](docs/bitbucket.md)
++ [Bitbucket](docs/bitbucket.md)
