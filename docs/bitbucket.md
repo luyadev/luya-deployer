@@ -1,9 +1,4 @@
-
-## Hosts and deployment with SSH keys
-
-To connect your hosting server with your repo is some configuration needed.
-
-### Bitbucket
+# Bitbucket
 
 1. Login in to your server via ssh from Terminal. `ssh username@domain.tld`
 2. Create an SSH key with read only access on your server. `ssh-keygen -f ~/.ssh/id_rsa_ro -t rsa -C "email@domain.tld"` 
