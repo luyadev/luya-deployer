@@ -124,6 +124,9 @@ task('cleanup:deployfile', function () {
     if (!$keepDeployer) {
         run('rm -f {{release_path}}/deploy.php');
     }
+    // remove git ignore files in readable and none readable dirs
+    run('rm -f {{release_path}}/.gitignore');
+    run('rm -f {{release_path}}/public_html/.gitignore');
     // sometimes the readme contains data about loggin informations or other privacy content.
     run('rm -f {{release_path}}/README.md');
     // the lock and json file can contain github tokens when working with private composer repos.
