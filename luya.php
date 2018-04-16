@@ -125,7 +125,7 @@ task('cleanup:deployfile', function () {
         run('rm -f {{release_path}}/deploy.php');
     }
     // remove git ignore files in readable and none readable dirs
-    run('rm -f {{release_path}}/.git');
+    run('rm -rf {{release_path}}/.git');
     run('rm -f {{release_path}}/.gitignore');
     run('rm -f {{release_path}}/public_html/.gitignore');
     // sometimes the readme contains data about loggin informations or other privacy content.
