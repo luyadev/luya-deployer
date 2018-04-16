@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. This project make usage of the [Yii Versioning Strategy](https://github.com/yiisoft/yii2/blob/master/docs/internals/versions.md).
 
+## 1.0.6 (in progress)
+
 ## 1.0.5 (16. April 2018)
 
 + Remove sensitive git and gitignore data after deployment.
