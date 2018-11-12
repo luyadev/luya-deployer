@@ -104,17 +104,6 @@ after('deploy:luya', 'customtask');
 
 Where `customtask` can be a group of other tasks or a task with a functions (which could be grouped to). See the official [Deployer documentation](http://deployer.org/docs/tasks).
 
-Another practical example is using a remote executed shell command in a custom task. For this we are using another [LUYA module](https://github.com/luyadev/luya-module-exporter) to automatically export a remote database and import it to the local database. This example will export the `prod` database of a project and import it, but only for the `prep` environment. Note the switched off `interactive` flag to override the security questions, because we are unable to obtain any user input via deployer tasks:
-
-```php
-task('deploy:importProdDb', function() {
-    cd('{{release_path}}');
-    run('./vendor/bin/luya exporter/database/remote-replace-local "mysql:host=localhost;dbname=prod_database" "USER" "PASSWORD" --interactive=0');
-})->onlyOn('prep');
-
-after('deploy:luya', 'deploy:importProdDb');
-```
-
 ## Additional Providers
 
 + [Bitbucket](docs/bitbucket.md)
