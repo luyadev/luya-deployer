@@ -1,4 +1,8 @@
-# Symlink Problem
+# Symlink created but application not reachable
+
+## Description
+
+For certain hosting/server environments the *current* symlink doesn't behave correctly. It gets built but the application is not reachable and therefore cannot be used.
 
 ## Problem
 
