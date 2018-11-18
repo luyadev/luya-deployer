@@ -37,7 +37,9 @@ env('bin/composer', function () {
 });
 
 /**
- * Override default composer option in order to provide ignore platform reqs
+ * Override default composer option in order to provide ignore platform reqs flag.
+ * 
+ * @since 1.0.6
  */
 env('composer_options', function() {
     $args = null;
