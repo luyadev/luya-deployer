@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. This projec
 
 ## 1.0.6 (in progress)
 
++ Add option `ignorePlatformReqs` for composer install.
+
 ## 1.0.5.1 (16. April 2018
 
 + Fixed bug when cleaning up .git folder data.

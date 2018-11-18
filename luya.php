@@ -37,6 +37,18 @@ env('bin/composer', function () {
 });
 
 /**
+ * Override default composer option in order to provide ignore platform reqs
+ */
+env('composer_options', function() {
+    $args = null;
+    if (has('ignorePlatformReqs')) {
+        $args = ' --ignore-platform-reqs';
+    }
+    return 'install --no-dev --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction' . $args;
+});
+
+
+/**
  * Task: deploy:luya
  */
 task('deploy:luya', function () {
