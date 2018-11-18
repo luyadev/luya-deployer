@@ -68,7 +68,7 @@ Those folders are located in your defined `deploy_path` folder.
 |adminCoreCommands|Sometimes you want to disable the default core commands of the admin module (migrate & import command). Thisi mostly the case when using a luya core application without admin and cms modules.|`set('adminCoreCommands', false)`
 |keepDeployer|Sometimes you want to leave the deployer.php file on the server (which will be default deleted from the server after deployment) in order enable this option|`set('keepDeployer', true)`
 |requireConfig|As LUYA creates a `env.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `env-prod.php` config will be loaded in `env.php`.|`set('requireConfig', 'custom_config');` Now the `env.php` file created by deployer on the server will look like this `<?php return require 'custom_config.php'; ?>`
-|ignorePlatformReqs|Ignores the composer platform requirements when running composer install. This can be usefull when you have a different CI PHP version.
+|ignorePlatformReqs|Ignores the composer platform requirements when running composer install. This can be usefull when you have a different CI PHP version.|`set('ignorePlatformReqs', true)`
 
 ### Add custom commands
 
