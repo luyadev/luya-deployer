@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 1.0.6.1 (20. May 2019)
+
++ Try to improve the composer global require command, certain options could be ignored.
+
 ## 1.0.6 (18. November 2018)
 
 + Add option `ignorePlatformReqs` for composer install `--ignore-platform-reqs` flag.
