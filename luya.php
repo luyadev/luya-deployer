@@ -25,7 +25,7 @@ env('bin/composer', function () {
     $installFxpPlugin = (has('installFxpPlugin')) ? get('installFxpPlugin') : true;
     
     if ($installFxpPlugin) {
-        run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:^1.4.2\"");
+        run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:^1.4.2\" --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction");
     }
     
     if (isVerbose()) {
