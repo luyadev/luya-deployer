@@ -62,13 +62,13 @@ Those folders are located in your defined `deploy_path` folder.
 
 ### Options
 
-|variable|description|example
-|---------|----------|------
-|installFxpPlugin|Whether fxp plugin should be installed or not|`set('installFxpPlugin', false)` disable auto installing of fxp composer asset plugin (global require scope).
-|adminCoreCommands|Sometimes you want to disable the default core commands of the admin module (migrate & import command). Thisi mostly the case when using a luya core application without admin and cms modules.|`set('adminCoreCommands', false)`
-|keepDeployer|Sometimes you want to leave the deployer.php file on the server (which will be default deleted from the server after deployment) in order enable this option|`set('keepDeployer', true)`
-|requireConfig|As LUYA creates a `env.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `env-prod.php` config will be loaded in `env.php`.|`set('requireConfig', 'custom_config');` Now the `env.php` file created by deployer on the server will look like this `<?php return require 'custom_config.php'; ?>`
-|ignorePlatformReqs|Ignores the composer platform requirements when running composer install. This can be usefull when you have a different CI PHP version.|`set('ignorePlatformReqs', true)`
+|variable|default|description|example
+|---------|----|----------|------
+|installFxpPlugin|`true`|Whether fxp plugin should be installed or not|`set('installFxpPlugin', false)` disable auto installing of fxp composer asset plugin (global require scope).
+|adminCoreCommands|`true`|Enable or disable the default core commands of the admin module (migrate & import command). This mostly the case when using a luya core application without admin and cms modules.|`set('adminCoreCommands', false)`
+|keepDeployer|`false`|Sometimes you want to leave the deployer.php file on the server (which will be default deleted from the server after deployment) in order enable this option|`set('keepDeployer', true)`
+|requireConfig|`env.php`|As LUYA creates a `env.php` file which contains the config which should be picked, by default it uses the name of the server name. So if you define `server('prod', ...)` then `env-prod.php` config will be loaded in `env.php`.|`set('requireConfig', 'custom_config');` Now the `env.php` file created by deployer on the server will look like this `<?php return require 'custom_config.php'; ?>`
+|ignorePlatformReqs|`false`|Ignores the composer platform requirements when running composer install. This can be usefull when you have a different CI PHP version.|`set('ignorePlatformReqs', true)`
 
 ### Add custom commands
 
