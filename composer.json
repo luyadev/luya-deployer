@@ -13,16 +13,11 @@
 		}
 	],
 	"require" : {
-		 "deployer/deployer": "~3.0"
+		 "deployer/deployer": "^6.0"
 	},
 	"require-dev" : {
-	   "phpunit/phpunit" : "~5.0"
+		"luyadev/luya-testsuite" : "^1.0"
 	},
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0.x-dev"
-        }
-    },
     "autoload" : {
         "psr-4" : {
             "luya\\deployer\\tests\\" : "tests/"

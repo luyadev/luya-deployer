@@ -2,4 +2,5 @@
 /.buildpath
 /.project
 /vendor/
-/deploy.php
+/luya
+deploy.php
