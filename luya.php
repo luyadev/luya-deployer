@@ -9,34 +9,8 @@ set('shared_dirs', [
     'runtime',
 ]);
 
-/**
- * Set custom composer bin
- */
-set('bin/composer', function () {
-    if (commandExist('composer')) {
-        $composer = run('which composer')->toString();
-        
-        if (isVerbose()) {
-            writeln("Use global installed composer: " . $composer);   
-        }
-    }
-    if (empty($composer)) {
-        run("cd {{release_path}} && curl -sS https://getcomposer.org/installer | {{bin/php}}");
-        $composer = '{{bin/php}} {{release_path}}/composer.phar';
-    }
-    
-    $installFxpPlugin = (has('installFxpPlugin')) ? get('installFxpPlugin') : true;
-    
-    if ($installFxpPlugin) {
-        run("cd {{release_path}} && ".$composer." global require \"fxp/composer-asset-plugin:^1.4.2\" --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction");
-    }
-    
-    if (isVerbose()) {
-        $version = run("cd {{release_path}} && ".$composer." -V");
-        writeln("Composer version: " . $version);
-    }
-    
-    return $composer;
+task('luya:composerglobal', function() {
+    run('cd {{release_path}} && {{bin/composer}} global require \"fxp/composer-asset-plugin:^1.4.2\" --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction');
 });
 
 task('luya:config', function() {
@@ -55,6 +29,11 @@ task('luya:commands', function() {
     run('{{bin/php}} {{release_path}}/vendor/bin/luya import');
     run('{{bin/php}} {{release_path}}/vendor/bin/luya health');
 });
+
+
+
+// before install vendors, install composer global fxp plugin
+before('deploy:vendors', 'luya:composerglobal');
 
 /**
  * Task: deploy:luya
