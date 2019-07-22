@@ -8,7 +8,7 @@ class DeployerTest extends TestCase
 {
     public function testLoadRecipe()
     {
-        $recipe = include __DIR__ . '/../luya.php';
+        $recipe = include('../luya.php');
 
         var_dump($recipe);
     }
