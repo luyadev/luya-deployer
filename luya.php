@@ -112,10 +112,21 @@ task('luya:command_exporter', function () {
     run('cd {{release_path}} && ./vendor/bin/luya exporter/export');
 });
 
+
+/**
+ * Task: flush cache
+ */
+task('luya:cacheflush', function() {
+    run('cd {{release_path}} && ./vendor/bin/luya cache/flush-all');
+})->desc('Flush application cache.');
+
 /**
  * Set global env shared dirs.
  */
-set('shared_dirs', ['public_html/storage']);
+set('shared_dirs', [
+    'public_html/storage',
+    'runtime',
+]);
 
 /**
  * Task: luya
@@ -128,8 +139,9 @@ task('luya', array(
     'deploy:luya',
     'deploy:symlink',
     'deploy:shared',
+    'luya:cacheflush',
     'cleanup'
-))->desc('LUYA project deployment');
+))->desc('LUYA app deployment.');
 
 /**
  * Task: cleanup:deployefile
@@ -151,7 +163,7 @@ task('cleanup:deployfile', function () {
     // the lock and json file can contain github tokens when working with private composer repos.
     run('rm -f {{release_path}}/composer.lock');
     run('rm -f {{release_path}}/composer.json');
-})->desc('Remove sensitive data');
+})->desc('Remove sensitive data.');
 
 /**
  * Set deployfile cleanup
