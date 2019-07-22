@@ -30,7 +30,18 @@ task('luya:commands', function() {
     run('{{bin/php}} {{release_path}}/vendor/bin/luya health');
 });
 
-
+/**
+ * Override default composer option in order to provide ignore platform reqs flag.
+ * 
+ * @since 1.0.6
+ */
+set('composer_options', function() {
+    $args = null;
+    if (has('ignorePlatformReqs')) {
+        $args = ' --ignore-platform-reqs';
+    }
+    return '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-suggest' . $args;
+});
 
 // before install vendors, install composer global fxp plugin
 before('deploy:vendors', 'luya:composerglobal');
