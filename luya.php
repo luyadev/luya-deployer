@@ -54,6 +54,8 @@ env('composer_options', function() {
 });
 
 
+
+
 /**
  * Task: deploy:luya
  */
@@ -61,10 +63,22 @@ task('deploy:luya', function () {
     
     // find file name
     $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
+    
+    $envFilePhpContent = '
+<?php
+// generated at: ' . date('r') . '
+if (file_exists(\'config.php\')) {
+    $config = include(\'config.php\');
+    return $config->toArray(['.$file.']);
+}
+
+return require \'env-'.$file.'.php\';
+';
+
     // go into configs to write the file
     cd('{{release_path}}/configs');
     run('echo "<?php return require \''.$file.'.php\';" > server.php');
-    run('echo "<?php return require \'env-'.$file.'.php\';" > env.php');
+    run('echo '.$envFilePhpContent.' > env.php');
     
     cd('{{release_path}}');
     

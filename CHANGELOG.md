@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 1.0.8 
+
++ [#11](https://github.com/luyadev/luya-deployer/issues/11) Support new `config.php` file policy with `luya\Config` objects.
+
 ## 1.0.7 (22. July 2019)
 
 + Add runtime to shared folders, flush application cache on deploy instead.
