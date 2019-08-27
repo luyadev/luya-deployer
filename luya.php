@@ -69,7 +69,7 @@ task('deploy:luya', function () {
 // generated at: ' . date('r') . '
 if (file_exists(\'config.php\')) {
     $config = include(\'config.php\');
-    return $config->toArray(['.$file.']);
+    return $config->toArray([\''.$file.'\']);
 }
 
 return require \'env-'.$file.'.php\';
