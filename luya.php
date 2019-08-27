@@ -64,14 +64,14 @@ task('deploy:luya', function () {
     // find file name
     $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
     
-    $envFilePhpContent = '
-<?php
+    $envFilePhpContent = '<?php
 // generated at: ' . date('r') . '
-if (file_exists(\'config.php\')) {
-    $config = include(\'config.php\');
-    return $config->toArray([\''.$file.'\']);
+// check if new config.php file based config object exists.
+\$config = @include(\'config.php\');
+if (\$config) {
+    return \$config->toArray([\''.$file.'\']);
 }
-
+// use old include structure
 return require \'env-'.$file.'.php\';
 ';
 
