@@ -78,7 +78,7 @@ return require \'env-'.$file.'.php\';
     // go into configs to write the file
     cd('{{release_path}}/configs');
     run('echo "<?php return require \''.$file.'.php\';" > server.php');
-    run('echo '.$envFilePhpContent.' > env.php');
+    run('echo "'.$envFilePhpContent.'" > env.php');
     
     cd('{{release_path}}');
     
