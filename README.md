@@ -24,12 +24,9 @@ composer require luyadev/luya-deployer --dev
 Create a `deploy.php` file with the content of your server configuration(s) and store it in the root directory of your project:
 
 ```php
-<<<<<<< HEAD
 <?php
-=======
 namespace Deployer;
 
->>>>>>> add-idea-for-latest-deployer-version
 require 'vendor/luyadev/luya-deployer/luya.php';
 
 // define your configuration here
