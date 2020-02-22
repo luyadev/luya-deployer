@@ -11,6 +11,8 @@
 
 This is the recipe to deploy your LUYA Website with [deployer](http://deployer.org).
 
+> Version 2.0 of LUYA Deployer uses latest [deployer](http://deployer.org) which does **not support the password()** method. In order to use `password()` install verison ^1.0 of luya composer!
+
 ## Install
 
 Add the deployer composer package to your project:

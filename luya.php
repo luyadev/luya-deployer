@@ -16,12 +16,23 @@ task('luya:composerglobal', function() {
 task('luya:config', function() {
      // find file name
      $env = get('stage');
+
+     $envFilePhpContent = '<?php
+// generated at: ' . date('r') . '
+// check if new config.php file based config object exists.
+\$config = @include(\'config.php\');
+if (\$config) {
+    return \$config->toArray([\''.$env.'\']);
+}
+// use old include structure
+return require \'env-'.$env.'.php\';
+';
+
+
      // go into configs to write the file
      cd('{{release_path}}/configs');
      
-     run('echo "<?php return require \'env-'.$env.'.php\';" > env.php');
-     
-     run('{{bin/php}} {{release_path}}/vendor/bin/luya migrate --interactive=0');
+     run('echo "'.$envFilePhpContent.'" > env.php');
 });
 
 task('luya:commands', function() {
