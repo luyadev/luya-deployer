@@ -28,7 +28,6 @@ if (\$config) {
 return require \'env-'.$env.'.php\';
 ';
 
-
      // go into configs to write the file
      cd('{{release_path}}/configs');
      
@@ -57,7 +56,9 @@ set('composer_options', function() {
 // before install vendors, install composer global fxp plugin
 before('deploy:vendors', 'luya:composerglobal');
 
-
+task('luya:flushcache', function() {	
+    run('cd {{release_path}} && ./vendor/bin/luya cache/flush-all');
+})->desc('Flush application cache.');
 
 /**
  * Task: deploy:luya
@@ -69,8 +70,8 @@ task('luya', [
     'deploy:vendors',
     'luya:config',
     'luya:commands',
+    'luya:flushcache',
     'deploy:symlink',
     'deploy:shared',
-    'luya:cacheflush',
     'cleanup'
 ]);
