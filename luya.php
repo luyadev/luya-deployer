@@ -57,7 +57,7 @@ set('composer_options', function() {
 before('deploy:vendors', 'luya:composerglobal');
 
 task('luya:flushcache', function() {	
-    run('cd {{release_path}} && ./vendor/bin/luya cache/flush-all');
+    run('{{bin/php}} {{release_path}}/vendor/bin/luya cache/flush-all');
 })->desc('Flush application cache.');
 
 /**
