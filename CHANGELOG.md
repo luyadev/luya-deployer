@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 2.0.0 (14. April 2020)
+
+> This release breaks the old API! Check the [UPGRADE document](UPGRADE.md) to read more about.
+
++ [#10](https://github.com/luyadev/luya-deployer/pull/10) Moved to Version 6.0 of PHP Deployer.
+
 ## 1.0.8 (22. October 2019)
 
 + [#11](https://github.com/luyadev/luya-deployer/issues/11) Support new `config.php` file policy with `luya\Config` objects.
