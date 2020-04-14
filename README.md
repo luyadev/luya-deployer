@@ -67,6 +67,7 @@ host('luya.io')
 Available Options
 
 |Key|Constant|Default|Description
+|---|--------|-------|-----
 |`ignorePlatformReqs`|`COMPOSER_IGNORE_PLATFORM_REQS`|false|Whether composer install should ignore platform requierments or not.
 |`installFxpPlugin`|`COMPOSER_INSTALL_FXP`|true|Whether composer global fxp plugin should be installed or not.
 |`adminCoreCommands`|`LUYA_ADMIN_CORE_COMMANDS`|true|Wether the LUYA core commands like migrate, import should be run after deployment.
