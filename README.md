@@ -34,7 +34,7 @@ host('SSHHOST.COM')
     ->stage('prod')
     ->port(22)
     ->user('SSHUSER')
-    ->set('deploy_path', '/var/www/vhosts/path/httpdocs');
+    ->set('deploy_path', '~/httpdocs');
 
 set('repository', 'https://USER:PASSWORD@github.com/VENDOR/REPO.git');
 ```
@@ -53,12 +53,12 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 
 > In order to configure a branch to deploy use `set('branch', 'myCheckoutBranch');`
 
-**Set your vhost entry directory**
+## Configure Hosting
 
 In order to run your website, you have to modify the root directory of your website to `current/public_html` folder. Deployer will create the following folders:
 
-+ releases
 + current
++ releases
 + shared
 
-Those folders are located in your defined `deploy_path` folder.
+Those folders are located in your defined `deploy_path` folder. So the `current/public_html` should be the only directory visible by the web.
