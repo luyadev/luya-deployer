@@ -53,6 +53,25 @@ If you have defined other servers like `prep`, `dev` etc you can just changed th
 
 > In order to configure a branch to deploy use `set('branch', 'myCheckoutBranch');`
 
+## Options
+
+Several options and can be defined with `set(OPTION, VALUE)`. Its recommend to set the define the option for a given server:
+
+```php
+host('luya.io')
+    ->stage('prod')
+    ->set(COMPOSER_IGNORE_PLATFORM_REQS, true)
+    ->set('deploy_path', '~/httpdocs');
+```
+
+Available Options
+
+|Key|Constant|Default|Description
+|`ignorePlatformReqs`|`COMPOSER_IGNORE_PLATFORM_REQS`|false|Whether composer install should ignore platform requierments or not.
+|`installFxpPlugin`|`COMPOSER_INSTALL_FXP`|true|Whether composer global fxp plugin should be installed or not.
+|`adminCoreCommands`|`LUYA_ADMIN_CORE_COMMANDS`|true|Wether the LUYA core commands like migrate, import should be run after deployment.
+
+
 ## Configure Hosting
 
 In order to run your website, you have to modify the root directory of your website to `current/public_html` folder. Deployer will create the following folders:
