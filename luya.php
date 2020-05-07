@@ -64,11 +64,16 @@ task('deploy:luya', function () {
     // find file name
     $file = (has('requireConfig')) ? get('requireConfig') : env('server.name');
     
+    $tag = input()->getOption('tag');
     $envFilePhpContent = '<?php
 // generated at: ' . date('r') . '
+\$tag = \''.$tag.'\';
 // check if new config.php file based config object exists.
 \$config = @include(\'config.php\');
 if (\$config) {
+    \$config->application([
+        \'version\' => \''.$tag.'\'
+    ]);
     return \$config->toArray([\''.$file.'\']);
 }
 // use old include structure
