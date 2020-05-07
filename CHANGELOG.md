@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 2.0.2
+
++ Added new tag option which sets the tag property based on the application.
+
 ## 2.0.1 (16. April 2020)
 
 + Fix issue with shared hostings and prefixed PHP binary.

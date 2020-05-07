@@ -28,12 +28,17 @@ task('luya:flushcache', function() {
 task('luya:config', function() {
      // find file name
      $env = get('stage');
-
+     $tag = input()->getOption('tag');
      $envFilePhpContent = '<?php
 // generated at: ' . date('r') . '
+// tag variable
+\$tag = \''.$tag.'\';
 // check if new config.php file based config object exists.
 \$config = @include(\'config.php\');
 if (\$config) {
+    \$config->application([
+        \'version\' => \''.$tag.'\'
+    ]);
     return \$config->toArray([\''.$env.'\']);
 }
 // use old include structure
