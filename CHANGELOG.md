@@ -5,7 +5,7 @@ In order to read more about upgrading and BC breaks have a look at the [UPGRADE 
 
 ## 2.0.2 (7. May 2020)
 
-+ Added new tag option which sets the tag property based on the application.
++ Added new option which sets the application version based on the currently deployed tag.
 
 ## 2.0.1 (16. April 2020)
 
