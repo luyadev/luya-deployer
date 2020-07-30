@@ -69,7 +69,7 @@ set('composer_options', function() {
         $args = ' --ignore-platform-reqs';
     }
     
-    return '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-suggest' . $args;
+    return '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader' . $args;
 });
 
 /**
