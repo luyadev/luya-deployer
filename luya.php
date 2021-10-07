@@ -59,6 +59,18 @@ task('luya:commands', function() {
     }
 });
 
+// downloads the binary and returns the path.
+set('bin/unglue', function () {
+    run("cd {{deploy_path}} && wget -O unglue.phar https://github.com/unglue-workflow/client/raw/master/unglue.phar && chmod +x unglue.phar");
+    run('mv {{deploy_path}}/unglue.phar {{deploy_path}}/.dep/unglue.phar');
+    return '{{bin/php}} {{deploy_path}}/.dep/unglue.phar';
+});
+
+// add unglue task after deployment, f.e. `after('luya:commands', 'unglue');` 
+task('unglue', function() {
+    run('cd {{release_path}} && {{bin/unglue}} compile');
+});
+
 /**
  * Override default composer option in order to provide ignore platform reqs flag.
  */
