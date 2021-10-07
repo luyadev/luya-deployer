@@ -66,6 +66,7 @@ set('bin/unglue', function () {
     return '{{bin/php}} {{deploy_path}}/.dep/unglue.phar';
 });
 
+// add unglue task after deployment, f.e. `after('luya:commands', 'unglue');` 
 task('unglue', function() {
     run('cd {{release_path}} && {{bin/unglue}} compile');
 });
