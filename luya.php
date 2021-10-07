@@ -59,7 +59,7 @@ task('luya:commands', function() {
     }
 });
 
-// Returns unglue binary
+// downloads the binary and returns the path.
 set('bin/unglue', function () {
     run("cd {{deploy_path}} && wget -O unglue.phar https://github.com/unglue-workflow/client/raw/master/unglue.phar && chmod +x unglue.phar");
     run('mv {{deploy_path}}/unglue.phar {{deploy_path}}/.dep/unglue.phar');
@@ -67,7 +67,7 @@ set('bin/unglue', function () {
 });
 
 task('unglue', function() {
-    run('{{bin/unglue}} compile');
+    run('cd {{release_path}} && {{bin/unglue}} compile resources/');
 });
 
 /**
