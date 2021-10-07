@@ -4,3 +4,4 @@
 /vendor/
 /luya
 deploy.php
+composer.lock
