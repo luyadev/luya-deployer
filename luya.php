@@ -59,6 +59,17 @@ task('luya:commands', function() {
     }
 });
 
+// Returns unglue binary
+set('bin/unglue', function () {
+    run("cd {{deploy_path}} && wget -O unglue.phar https://github.com/unglue-workflow/client/raw/master/unglue.phar && chmod +x unglue.phar");
+    run('mv {{deploy_path}}/unglue.phar {{deploy_path}}/.dep/unglue.phar');
+    return '{{bin/php}} {{deploy_path}}/.dep/unglue.phar';
+});
+
+task('unglue', function() {
+    run('{{bin/unglue}} compile');
+});
+
 /**
  * Override default composer option in order to provide ignore platform reqs flag.
  */
