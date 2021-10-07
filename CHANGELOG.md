@@ -5,7 +5,7 @@ In order to read more about upgrading and BC breaks have a look at the [UPGRADE 
 
 ## 2.1.0 (7. October 2021)
 
-+ Added new `unglue` tasks which is downloading the unglue binary. Usage example `after('luya:commands', 'unglue');` 
++ [#17](https://github.com/luyadev/luya-deployer/issues/17) Added new `unglue` tasks which is downloading the unglue binary. Usage example `after('luya:commands', 'unglue');` 
 
 ## 2.0.3 (6. August 2020)
 
