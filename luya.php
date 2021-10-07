@@ -7,7 +7,6 @@ require 'recipe/common.php';
 define('COMPOSER_IGNORE_PLATFORM_REQS', 'ignorePlatformReqs');
 define('COMPOSER_INSTALL_FXP', 'installFxpPlugin');
 define('LUYA_ADMIN_CORE_COMMANDS', 'adminCoreCommands');
-define('UNGLUE_PATH', 'ungluePath');
 
 set('shared_dirs', [
     'public_html/storage',
@@ -68,7 +67,7 @@ set('bin/unglue', function () {
 });
 
 task('unglue', function() {
-    run('cd {{release_path}} && {{bin/unglue}} compile ' . get(UNGLUE_PATH, 'resources/'));
+    run('cd {{release_path}} && {{bin/unglue}} compile');
 });
 
 /**

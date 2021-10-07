@@ -80,8 +80,7 @@ Available Options
 
 ## Unglue
 
-In order to use [unglue](https://unglue.io) you can add `after('luya:commands', 'unglue');` in your deploy.php. This will download the unglue phar file and compile the files according to the .unglue file. By default the `resources/` folder is canned for .unglue files. In order to adjust this use the config `UNGLUE_PATH`.
-
+In order to use [unglue](https://unglue.io) you can add `after('luya:commands', 'unglue');` in your deploy.php. This will download the unglue phar file and compile the files according to the .unglue file.
 ## Authorization Password / SSH Key
 
 Since the `password()` method has been removed, authentication can either be done using SSH Keys or by entering the password while deployment. The `dep luya prod` command will **prompt** for the users password unless he could not connect by SSH Key. By default the `~/.ssh/id_rsa` will be taken to make a first attempt. You can configure ssh settings with the following methods:
