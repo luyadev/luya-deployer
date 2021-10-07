@@ -80,7 +80,7 @@ Available Options
 
 ## Unglue
 
-In order to use [unglue](https://unglue.io) you can add `after('luya:commands', 'unglue');` in your deploy.php. This will download the unglue phar file and compile the files according to the .unglue file. By default the `./resources` folder is canned for .unglue files.
+In order to use [unglue](https://unglue.io) you can add `after('luya:commands', 'unglue');` in your deploy.php. This will download the unglue phar file and compile the files according to the .unglue file. By default the `resources/` folder is canned for .unglue files. In order to adjust this use the config `UNGLUE_PATH`.
 
 ## Authorization Password / SSH Key
 
