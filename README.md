@@ -73,7 +73,7 @@ Available Options
 |Key|Constant|Default|Description
 |---|--------|-------|-----
 |`ignorePlatformReqs`|`COMPOSER_IGNORE_PLATFORM_REQS`|false|Whether composer install should ignore platform requirements or not.
-|`installFxpPlugin`|`COMPOSER_INSTALL_FXP`|true|Whether composer global fxp plugin should be installed or not.
+|`installFxpPlugin`|`COMPOSER_INSTALL_FXP`|false|Whether composer global fxp plugin should be installed or not.
 |`adminCoreCommands`|`LUYA_ADMIN_CORE_COMMANDS`|true|Whether the LUYA core commands like migrate, import should be run after deployment.
 
 > In order to configure a branch to deploy use `set('branch', 'myCheckoutBranch');`
