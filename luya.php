@@ -15,7 +15,7 @@ set('shared_dirs', [
 
 task('luya:composerglobal', function() {
 
-    if (get(COMPOSER_INSTALL_FXP, true)) {
+    if (get(COMPOSER_INSTALL_FXP, false)) {
         run('cd {{release_path}} && {{bin/composer}} global require "fxp/composer-asset-plugin:^1.4.2" --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction');
     }
 });
