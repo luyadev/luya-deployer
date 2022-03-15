@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 2.2.0 (15. March 2022)
+
++ [#23](https://github.com/luyadev/luya-deployer/pull/23) FXP installation is now by default **off** instead of **on**. This is a small BC break. In order to restore original behavior use `->set('installFxpPlugin', true)`
+
 ## 2.1.0 (7. October 2021)
 
 + [#17](https://github.com/luyadev/luya-deployer/issues/17) Added new `unglue` tasks which is downloading the unglue binary. Usage example `after('luya:commands', 'unglue');` 
