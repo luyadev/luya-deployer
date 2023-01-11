@@ -1,26 +1,34 @@
 {
-	"name" : "luyadev/luya-deployer",
-	"description" : "This is the LUYA recipe to deploy an application with Deployer, the Deployment Tool for PHP.",
-	"type" : "luya-core",
-	"keywords" : ["php", "yii2", "luya", "deployer", "luya-module", "phpdeployer", "deployment"],
-	"license": "MIT",
-	"homepage" : "https://luya.io",
-	"authors" : [
-		{
-			"name" : "Basil Suter",
-			"email" : "git@nadar.io",
-			"homepage" : "https://github.com/nadar"
-		}
-	],
-	"require" : {
-		 "deployer/deployer": "^6.0"
-	},
-	"require-dev" : {
-		"luyadev/luya-testsuite" : "^1.0"
-	},
-    "autoload" : {
-        "psr-4" : {
-            "luya\\deployer\\tests\\" : "tests/"
-        }
+  "name": "luyadev/luya-deployer",
+  "description": "This is the LUYA recipe to deploy an application with Deployer, the Deployment Tool for PHP.",
+  "type": "luya-core",
+  "keywords": [
+    "php",
+    "yii2",
+    "luya",
+    "deployer",
+    "luya-module",
+    "phpdeployer",
+    "deployment"
+  ],
+  "license": "MIT",
+  "homepage": "https://luya.io",
+  "authors": [
+    {
+      "name": "Basil Suter",
+      "email": "git@nadar.io",
+      "homepage": "https://github.com/nadar"
     }
+  ],
+  "require": {
+    "deployer/deployer": "^6.0"
+  },
+  "require-dev": {
+    "luyadev/luya-testsuite": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "luya\\deployer\\tests\\": "tests/"
+    }
+  }
 }
