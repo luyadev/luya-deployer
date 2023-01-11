@@ -68,7 +68,7 @@ set('bin/unglue', function () {
 
 // add unglue task after deployment, f.e. `after('luya:commands', 'unglue');` 
 task('unglue', function() {
-    run('cd {{release_path}} && {{bin/unglue}} compile');
+    run('cd {{release_path}} && {{bin/unglue}} compile --silent=0');
 });
 
 /**
