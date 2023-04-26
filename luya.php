@@ -121,5 +121,5 @@ task('luya', [
     'luya:flushcache',
     'deploy:symlink',
     'deploy:shared',
-    'cleanup'
+    'deploy:cleanup',
 ]);
