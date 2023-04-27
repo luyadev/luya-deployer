@@ -93,8 +93,7 @@ set('composer_options', function() {
  */
 set('bin/composer', function () {
     if (commandExist('composer')) {
-        // original: $composer = locateBinaryPath('composer');
-        return locateBinaryPath('composer');
+        return which('composer');
     }
 
     if (empty($composer)) {
