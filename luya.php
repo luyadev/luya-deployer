@@ -113,13 +113,9 @@ before('deploy:vendors', 'luya:composerglobal');
  */
 task('luya', [
     'deploy:prepare',
-    'deploy:release',
-    'deploy:update_code',
     'deploy:vendors',
     'luya:config',
     'luya:commands',
     'luya:flushcache',
-    'deploy:symlink',
-    'deploy:shared',
-    'deploy:cleanup',
+    'deploy:publish',
 ]);
