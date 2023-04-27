@@ -13,7 +13,6 @@ set('shared_dirs', [
     'runtime',
 ]);
 
-
 task('luya:flushcache', function() {	
     run('{{bin/php}} {{release_path}}/vendor/bin/luya cache/flush-all');
 })->desc('Flush application cache.');
@@ -64,18 +63,6 @@ task('unglue', function() {
     run('cd {{release_path}} && {{bin/unglue}} compile --silent=0');
 });
 
-/**
- * Override default composer option in order to provide ignore platform reqs flag.
- */
-set('composer_options', function() {
-    $args = null;
-
-    if (has(COMPOSER_IGNORE_PLATFORM_REQS) && get(COMPOSER_IGNORE_PLATFORM_REQS)) {
-        $args = ' --ignore-platform-reqs';
-    }
-    
-    return '{{composer_action}} --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader --no-plugins' . $args;
-});
 
 /**
  * Override the behavior of finding the composer binary. 
