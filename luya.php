@@ -13,13 +13,6 @@ set('shared_dirs', [
     'runtime',
 ]);
 
-task('luya:composerglobal', function() {
-
-    if (get(COMPOSER_INSTALL_FXP, false)) {
-        run('cd {{release_path}} && {{bin/composer}} global require "fxp/composer-asset-plugin:^1.4.2" --verbose --prefer-dist --optimize-autoloader --no-progress --no-interaction');
-    }
-});
-
 
 task('luya:flushcache', function() {	
     run('{{bin/php}} {{release_path}}/vendor/bin/luya cache/flush-all');
@@ -104,8 +97,6 @@ set('bin/composer', function () {
     return '{{bin/php}} ' . $composer;
 });
 
-// before install vendors, install composer global fxp plugin if enabled
-before('deploy:vendors', 'luya:composerglobal');
 
 /**
  * Task: deploy:luya
