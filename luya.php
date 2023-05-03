@@ -19,7 +19,7 @@ task('luya:flushcache', function() {
 
 task('luya:config', function() {
      // find file name
-     $env = get('stage');
+     $env = get('labels')['stage'];
      $tag = input()->getOption('tag');
      $envFilePhpContent = '<?php
 // generated at: ' . date('r') . '
