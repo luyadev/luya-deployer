@@ -31,7 +31,7 @@ require 'vendor/luyadev/luya-deployer/luya.php';
 
 // define your configuration here
 host('SSHHOST.COM')
-    ->set('labels', ['stage' => 'prod'])
+    ->setLabels(['stage' => 'prod'])
     ->set('remote_user', 'SSHUSER')
     ->set('deploy_path', '~/httpdocs');
 
