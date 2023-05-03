@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 In order to read more about upgrading and BC breaks have a look at the [UPGRADE Document](UPGRADE.md).
 
+## 3.0.0 (3. May 2023)
+
+> This release breaks the old API! Check the [UPGRADE document](UPGRADE.md) to read more about.
+
++ Version 7.0 of [deployphp/deployer](https://github.com/deployphp/deployer), see [migrate 6.x to 7.0 Guide](https://deployer.org/docs/7.x/UPGRADE#upgrade-from-6x-to-7x)
+
 ## 2.2.1 (11. January 2023)
 
 + Added `--silent=0` to unglue command to ensure CI/CD fails if an error occurs.
