@@ -11,7 +11,7 @@
 
 This is the recipe to deploy your LUYA Website with [PHP Deployer](http://deployer.org).
 
-> **Version 2.0 of LUYA Deployer uses latest [PHP Deployer](http://deployer.org) version which does not support the password() method. In order to use `password()` install version ^1.0 of LUYA Deployer! [See Version 1.0 Documentation](https://github.com/luyadev/luya-deployer/tree/1.0)**
+> **Version 3.0 of LUYA Deployer is compatible with [PHP Deployer 7](http://deployer.org)**
 
 ## Install
 
@@ -31,9 +31,8 @@ require 'vendor/luyadev/luya-deployer/luya.php';
 
 // define your configuration here
 host('SSHHOST.COM')
-    ->stage('prod')
-    ->port(22)
-    ->user('SSHUSER')
+    ->set('labels', ['stage' => 'prod'])
+    ->set('remote_user', 'SSHUSER')
     ->set('deploy_path', '~/httpdocs');
 
 set('repository', 'https://USER:PASSWORD@github.com/VENDOR/REPO.git');
@@ -73,7 +72,6 @@ Available Options
 |Key|Constant|Default|Description
 |---|--------|-------|-----
 |`ignorePlatformReqs`|`COMPOSER_IGNORE_PLATFORM_REQS`|false|Whether composer install should ignore platform requirements or not.
-|`installFxpPlugin`|`COMPOSER_INSTALL_FXP`|false|Whether composer global fxp plugin should be installed or not.
 |`adminCoreCommands`|`LUYA_ADMIN_CORE_COMMANDS`|true|Whether the LUYA core commands like migrate, import should be run after deployment.
 
 > In order to configure a branch to deploy use `set('branch', 'myCheckoutBranch');`
@@ -81,6 +79,7 @@ Available Options
 ## Unglue
 
 In order to use [unglue](https://unglue.io) you can add `after('luya:commands', 'unglue');` in your deploy.php. This will download the unglue phar file and compile the files according to the .unglue file.
+
 ## Authorization Password / SSH Key
 
 Since the `password()` method has been removed, authentication can either be done using SSH Keys or by entering the password while deployment. The `dep luya prod` command will **prompt** for the users password unless he could not connect by SSH Key. By default the `~/.ssh/id_rsa` will be taken to make a first attempt. You can configure ssh settings with the following methods:
