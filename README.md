@@ -78,7 +78,7 @@ Available Options
 
 ## Unglue
 
-In order to use [unglue](https://unglue.io) you can add `after('luya:commands', 'unglue');` in your deploy.php. This will download the unglue phar file and compile the files according to the .unglue file.
+In order to use [unglue](https://unglue.io) you can add `after('luya:commands', 'unglue');` in your deploy.php. This will download the unglue phar file and compile the files according to the .unglue file. You will also need to `set('unglue_server', 'https://...');` to your Unglue server URL.
 
 ## Authorization Password / SSH Key
 
